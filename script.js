@@ -23,10 +23,18 @@ function getRandomQuote() {
     return quotes[randomIndex];
 }
 
+// *** Helper to get initials ***
+function getInitials(name) {
+    return name.split(' ').map(word => word[0]).join('');
+}
+
+// *** Modify displayQuote ***
 function displayQuote() {
     const quote = getRandomQuote();
     quoteTextElement.textContent = `"${quote.text}"`; // Add quotes around the text
-    quoteAuthorElement.textContent = `- ${quote.author}`;
+    // *** Display initials along with name ***
+    const initials = getInitials(quote.author);
+    quoteAuthorElement.textContent = `- ${quote.author} (${initials})`; // MODIFIED LINE
 }
 
 // --- Event Listeners ---
